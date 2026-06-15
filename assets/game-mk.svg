@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 480">
+  <rect width="640" height="480" fill="#160b12"/>
+  <circle cx="320" cy="210" r="132" fill="#ff3f6c" opacity=".95"/>
+  <path d="M245 255c70-118 134-130 180-142-28 45-23 91 16 135-72-30-130-18-196 7z" fill="#0b0b10"/>
+  <text x="320" y="410" text-anchor="middle" font-family="Arial" font-size="82" font-weight="800" fill="#fff">MORTAL</text>
+</svg>

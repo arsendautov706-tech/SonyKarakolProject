@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" role="img">
+  <defs>
+    <linearGradient id="bg" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0" stop-color="#0a1022"/>
+      <stop offset=".45" stop-color="#151133"/>
+      <stop offset="1" stop-color="#071019"/>
+    </linearGradient>
+    <linearGradient id="neon" x1="0" x2="1">
+      <stop offset="0" stop-color="#28f0d0"/>
+      <stop offset=".5" stop-color="#37a6ff"/>
+      <stop offset="1" stop-color="#ff3f6c"/>
+    </linearGradient>
+    <filter id="glow"><feGaussianBlur stdDeviation="10" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+  </defs>
+  <rect width="1600" height="900" fill="url(#bg)"/>
+  <path d="M0 620 C260 540 410 650 650 570 C930 480 1110 520 1600 430 L1600 900 L0 900 Z" fill="#080a12" opacity=".92"/>
+  <g opacity=".22" stroke="#fff" stroke-width="2">
+    <path d="M0 180H1600M0 300H1600M0 420H1600"/>
+    <path d="M180 0V520M420 0V540M700 0V520M1020 0V520M1320 0V510"/>
+  </g>
+  <g filter="url(#glow)">
+    <rect x="210" y="255" width="320" height="190" rx="18" fill="#12192a" stroke="#28f0d0" stroke-width="5"/>
+    <rect x="1080" y="235" width="330" height="205" rx="18" fill="#12192a" stroke="#ff3f6c" stroke-width="5"/>
+    <path d="M170 495H560L510 750H230Z" fill="#0d111d" stroke="#37a6ff" stroke-width="4"/>
+    <path d="M1040 495H1450L1395 750H1100Z" fill="#0d111d" stroke="#37a6ff" stroke-width="4"/>
+    <path d="M715 650c0-82 170-82 170 0v90H715z" fill="#10182a" stroke="url(#neon)" stroke-width="6"/>
+    <rect x="650" y="315" width="300" height="180" rx="20" fill="#111a2c" stroke="url(#neon)" stroke-width="6"/>
+    <circle cx="730" cy="405" r="20" fill="#28f0d0"/>
+    <circle cx="865" cy="405" r="20" fill="#ff3f6c"/>
+    <path d="M760 440h80" stroke="#37a6ff" stroke-width="12" stroke-linecap="round"/>
+  </g>
+  <text x="800" y="150" text-anchor="middle" font-family="Arial, sans-serif" font-size="74" font-weight="800" fill="#ffffff" opacity=".28">SONY KARAKOL</text>
+</svg>

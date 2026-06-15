@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 480">
+  <rect width="640" height="480" fill="#0b7a3d"/>
+  <path d="M0 240h640M320 0v480" stroke="#d7ffe6" stroke-width="8" opacity=".45"/>
+  <circle cx="320" cy="240" r="86" fill="none" stroke="#d7ffe6" stroke-width="8" opacity=".55"/>
+  <circle cx="320" cy="240" r="22" fill="#fff"/>
+  <text x="320" y="410" text-anchor="middle" font-family="Arial" font-size="82" font-weight="800" fill="#fff">FIFA</text>
+</svg>

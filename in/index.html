@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Sony Karakol - игровой клуб в Караколе с PlayStation, турнирами, тарифами и онлайн-заявкой на бронирование."
+    />
+    <title>Sony Karakol | Игровой клуб</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Orbitron:wght@700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+  <body>
+    <header class="site-header" data-header>
+      <a class="logo" href="#home" aria-label="Sony Karakol">
+        <span>Sony</span>Karakol
+      </a>
+      <button class="menu-toggle" type="button" aria-label="Открыть меню" data-menu-toggle>
+        <span></span><span></span><span></span>
+      </button>
+      <nav class="nav" data-nav>
+        <a href="#home">Главная</a>
+        <a href="#about">О клубе</a>
+        <a href="#games">Игры</a>
+        <a href="#prices">Цены</a>
+        <a href="#gallery">Галерея</a>
+        <a href="#contacts">Контакты</a>
+        <a class="nav-book" href="#contacts">Забронировать</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero section" id="home">
+        <div class="hero-bg" role="img" aria-label="Игровая зона Sony Karakol"></div>
+        <div class="hero-content reveal">
+          <p class="eyebrow">PlayStation club in Karakol</p>
+          <h1>Sony Karakol</h1>
+          <p class="hero-text">
+            Комфортная игровая зона, PlayStation 5, популярные игры, турниры и
+            бронирование мест для компании друзей.
+          </p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#contacts">Забронировать место</a>
+            <a class="btn btn-secondary" href="#prices">Узнать цены</a>
+          </div>
+        </div>
+        <a class="scroll-cue" href="#about" aria-label="Перейти к разделу о клубе"></a>
+      </section>
+
+      <section class="section about" id="about">
+        <div class="section-head reveal">
+          <p class="eyebrow">О клубе</p>
+          <h2>Игровое пространство для отдыха и соревнований</h2>
+          <p>
+            Sony Karakol создан для тех, кто хочет играть на современном
+            оборудовании, встречаться с друзьями и участвовать в локальных
+            турнирах.
+          </p>
+        </div>
+        <div class="about-grid">
+          <div class="about-visual reveal">
+            <img src="assets/club-zone.svg" alt="Игровая зона с консолями" />
+          </div>
+          <div class="about-content reveal">
+            <div class="feature-grid">
+              <article>
+                <span>PS5</span>
+                <h3>PlayStation 5</h3>
+                <p>Мощные консоли, большие экраны и стабильный игровой процесс.</p>
+              </article>
+              <article>
+                <span>VIP</span>
+                <h3>Комфортные места</h3>
+                <p>Удобные кресла, чистые зоны и атмосфера игрового клуба.</p>
+              </article>
+              <article>
+                <span>NET</span>
+                <h3>Быстрый интернет</h3>
+                <p>Подходит для онлайн-матчей, турниров и командных игр.</p>
+              </article>
+              <article>
+                <span>CUP</span>
+                <h3>Турниры</h3>
+                <p>События по FIFA, UFC, Mortal Kombat и другим дисциплинам.</p>
+              </article>
+            </div>
+            <div class="stats">
+              <div><strong data-count="40">0</strong><span>игр</span></div>
+              <div><strong data-count="12">0</strong><span>мест</span></div>
+              <div><strong data-count="5">0</strong><span>тарифов</span></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section games" id="games">
+        <div class="section-head reveal">
+          <p class="eyebrow">Каталог игр</p>
+          <h2>Популярные игры для компании</h2>
+          <p>Спорт, файтинги, гонки, открытый мир и приключения.</p>
+        </div>
+        <div class="cards game-grid">
+          <article class="game-card reveal">
+            <img src="assets/game-fifa.svg" alt="FIFA" />
+            <h3>FIFA</h3>
+            <p class="tag">Футбольный симулятор</p>
+            <p>Классика для турниров, дуэлей и командной игры.</p>
+          </article>
+          <article class="game-card reveal">
+            <img src="assets/game-mk.svg" alt="Mortal Kombat" />
+            <h3>Mortal Kombat</h3>
+            <p class="tag">Файтинг</p>
+            <p>Динамичные поединки для любителей соревновательной игры.</p>
+          </article>
+          <article class="game-card reveal">
+            <img src="assets/game-gta.svg" alt="GTA" />
+            <h3>GTA</h3>
+            <p class="tag">Открытый мир</p>
+            <p>Свобода действий, сюжетные миссии и атмосферный геймплей.</p>
+          </article>
+          <article class="game-card reveal">
+            <img src="assets/game-ufc.svg" alt="UFC" />
+            <h3>UFC</h3>
+            <p class="tag">Спорт</p>
+            <p>Смешанные единоборства, точные удары и быстрые реакции.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section prices" id="prices">
+        <div class="section-head reveal">
+          <p class="eyebrow">Цены</p>
+          <h2>Прозрачные тарифы</h2>
+          <p>Выберите почасовую игру, дневной пакет, ночь или абонемент.</p>
+        </div>
+        <div class="price-grid">
+          <article class="price-card reveal">
+            <h3>Почасовой</h3>
+            <strong>150 сом</strong>
+            <span>за 1 час</span>
+            <ul>
+              <li>PlayStation 5</li>
+              <li>1 игровое место</li>
+              <li>Любая доступная игра</li>
+            </ul>
+            <a class="btn btn-secondary" href="#contacts">Забронировать</a>
+          </article>
+          <article class="price-card popular reveal">
+            <p class="badge">Популярный выбор</p>
+            <h3>Дневной</h3>
+            <strong>700 сом</strong>
+            <span>до 6 часов</span>
+            <ul>
+              <li>Выгодно для компании</li>
+              <li>Комфортная игровая зона</li>
+              <li>Подходит для турниров</li>
+            </ul>
+            <a class="btn btn-primary" href="#contacts">Забронировать</a>
+          </article>
+          <article class="price-card reveal">
+            <h3>Ночной</h3>
+            <strong>1000 сом</strong>
+            <span>ночной пакет</span>
+            <ul>
+              <li>Сниженная ночная цена</li>
+              <li>Для групповых игр</li>
+              <li>Бронь заранее</li>
+            </ul>
+            <a class="btn btn-secondary" href="#contacts">Забронировать</a>
+          </article>
+          <article class="price-card reveal">
+            <h3>Абонемент</h3>
+            <strong>от 2500 сом</strong>
+            <span>для постоянных игроков</span>
+            <ul>
+              <li>Скидка на посещения</li>
+              <li>Приоритетная бронь</li>
+              <li>Участие в акциях</li>
+            </ul>
+            <a class="btn btn-secondary" href="#contacts">Забронировать</a>
+          </article>
+        </div>
+      </section>
+
+      <section class="section gallery" id="gallery">
+        <div class="section-head reveal">
+          <p class="eyebrow">Галерея</p>
+          <h2>Атмосфера клуба</h2>
+          <p>Игровые зоны, оборудование и турнирные вечера.</p>
+        </div>
+        <div class="gallery-grid">
+          <button type="button" class="gallery-item reveal" data-gallery="assets/gallery-zone.svg">
+            <img src="assets/gallery-zone.svg" alt="Игровая зона" />
+          </button>
+          <button type="button" class="gallery-item reveal" data-gallery="assets/gallery-console.svg">
+            <img src="assets/gallery-console.svg" alt="Консоль и геймпад" />
+          </button>
+          <button type="button" class="gallery-item reveal" data-gallery="assets/gallery-tournament.svg">
+            <img src="assets/gallery-tournament.svg" alt="Турнир" />
+          </button>
+          <button type="button" class="gallery-item reveal" data-gallery="assets/gallery-lounge.svg">
+            <img src="assets/gallery-lounge.svg" alt="Комфортная зона" />
+          </button>
+        </div>
+      </section>
+
+      <section class="section contacts" id="contacts">
+        <div class="section-head reveal">
+          <p class="eyebrow">Контакты</p>
+          <h2>Связь и бронирование</h2>
+          <p>Оставьте заявку, и администратор подтвердит время посещения.</p>
+        </div>
+        <div class="contact-grid">
+          <div class="contact-info reveal">
+            <div><strong>Адрес</strong><span>г. Каракол, центр города</span></div>
+            <div><strong>Телефон</strong><span>+996 700 000 000</span></div>
+            <div><strong>Email</strong><span>sonykarakol@example.com</span></div>
+            <div><strong>Режим</strong><span>Ежедневно 10:00 - 02:00</span></div>
+            <div class="socials">
+              <a href="https://t.me/" target="_blank" rel="noreferrer">TG</a>
+              <a href="https://instagram.com/" target="_blank" rel="noreferrer">IG</a>
+              <a href="https://wa.me/996700000000" target="_blank" rel="noreferrer">WA</a>
+            </div>
+            <div class="map-placeholder">Karakol map</div>
+          </div>
+          <form class="booking-form reveal" data-form>
+            <label>
+              Имя
+              <input type="text" name="name" placeholder="Ваше имя" maxlength="40" required />
+              <small></small>
+            </label>
+            <label>
+              Телефон
+              <input type="tel" name="phone" placeholder="+996 700 000 000" maxlength="20" required />
+              <small></small>
+            </label>
+            <label>
+              Сообщение
+              <textarea name="message" placeholder="Дата, время, тариф или вопрос" maxlength="240" required></textarea>
+              <small></small>
+            </label>
+            <button class="btn btn-primary" type="submit">Отправить заявку</button>
+            <p class="form-status" data-status></p>
+          </form>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div>
+        <a class="logo" href="#home"><span>Sony</span>Karakol</a>
+      </div>
+      <nav>
+        <a href="#about">О клубе</a>
+        <a href="#games">Игры</a>
+        <a href="#prices">Цены</a>
+        <a href="#contacts">Контакты</a>
+      </nav>
+      <div>
+        <p>+996 700 000 000</p>
+        <p>Ежедневно 10:00 - 02:00</p>
+      </div>
+      <p class="site-time">Ежедневно 10:00 - 02:00</p>
+    </footer>
+
+    <div class="lightbox" data-lightbox aria-hidden="true">
+      <button type="button" class="lightbox-close" data-lightbox-close aria-label="Закрыть">x</button>
+      <button type="button" class="lightbox-prev" data-lightbox-prev aria-label="Предыдущее">‹</button>
+      <img src="" alt="Просмотр фотографии" data-lightbox-img />
+      <button type="button" class="lightbox-next" data-lightbox-next aria-label="Следующее">›</button>
+    </div>
+
+    <script src="js/script.js"></script>
+  </body>
+</html>

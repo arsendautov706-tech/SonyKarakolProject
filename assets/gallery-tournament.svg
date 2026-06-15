@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640">
+  <rect width="640" height="640" fill="#111827"/>
+  <path d="M320 80l50 105 116 16-84 82 20 116-102-54-102 54 20-116-84-82 116-16z" fill="#89ff7d" opacity=".9"/>
+  <rect x="120" y="420" width="400" height="90" rx="14" fill="#151928" stroke="#28f0d0" stroke-width="6"/>
+  <text x="320" y="482" text-anchor="middle" font-family="Arial" font-size="50" font-weight="800" fill="#fff">TOURNAMENT</text>
+</svg>
