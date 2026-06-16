@@ -120,6 +120,22 @@ function initLightbox() {
   });
 }
 
+function saveBooking(data) {
+  try {
+    const bookings = JSON.parse(localStorage.getItem("sonykarakol_bookings") || "[]");
+    bookings.unshift({
+      id: Date.now(),
+      name: String(data.get("name")).trim(),
+      phone: String(data.get("phone")).trim(),
+      message: String(data.get("message")).trim(),
+      createdAt: new Date().toISOString()
+    });
+    localStorage.setItem("sonykarakol_bookings", JSON.stringify(bookings));
+  } catch (error) {
+    console.error("Не удалось сохранить заявку:", error);
+  }
+}
+
 function initForm() {
   const form = document.querySelector("[data-form]");
   const status = document.querySelector("[data-status]");
@@ -153,6 +169,7 @@ function initForm() {
 
     if (!valid) return;
 
+    saveBooking(data);
     status.textContent = "Заявка принята. Администратор свяжется с вами для подтверждения.";
     form.reset();
   });

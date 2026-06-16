@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Sony Karakol админка для просмотра заявок и управления заявками клиентов."
+    />
+    <title>Админка | Sony Karakol</title>
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+  <body>
+    <header class="site-header" data-header>
+      <a class="logo" href="index.html" aria-label="Sony Karakol">
+        <span>Sony</span>Karakol
+      </a>
+      <nav class="nav" data-nav>
+        <a href="index.html">Главная</a>
+        <a href="admin.html">Админ</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="section admin-panel">
+        <div class="section-head reveal">
+          <p class="eyebrow">Администратор</p>
+          <h2>Панель управления заявками</h2>
+          <p>Вход по логину и просмотр всех заявок, отправленных с сайта.</p>
+        </div>
+
+        <div class="admin-card reveal">
+          <div class="admin-sidebar">
+            <h3>Вход администратора</h3>
+            <p>Используйте свои учетные данные, чтобы открыть панель.</p>
+          </div>
+
+          <div class="admin-content">
+            <div class="admin-login" data-login-panel>
+              <form class="admin-form" data-admin-form>
+                <label>
+                  Логин
+                  <input type="text" name="username" placeholder="admin" required />
+                </label>
+                <label>
+                  Пароль
+                  <input type="password" name="password" placeholder="••••••••" required />
+                </label>
+                <button class="btn btn-primary" type="submit">Войти</button>
+                <p class="form-status" data-login-status></p>
+                <p class="admin-note">Учётные данные: <strong>admin / SonyKar2026</strong></p>
+              </form>
+            </div>
+
+            <div class="admin-dashboard hidden" data-dashboard>
+              <div class="admin-actions">
+                <button class="btn btn-secondary" type="button" data-logout>Выйти</button>
+                <button class="btn btn-primary" type="button" data-clear>Очистить все заявки</button>
+              </div>
+
+              <div class="admin-summary">
+                <p>Всего заявок: <strong data-total>0</strong></p>
+              </div>
+
+              <div class="admin-list" data-booking-list></div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <script src="js/admin.js"></script>
+  </body>
+</html>
