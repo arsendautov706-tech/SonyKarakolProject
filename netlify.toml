@@ -1,0 +1,7 @@
+[build]
+  publish = "."
+  command = ""
+
+# Optional: set a default deploy context
+[context.production.environment]
+  NODE_ENV = "production"

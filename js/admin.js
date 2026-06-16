@@ -242,54 +242,62 @@ function initAdmin() {
 
   // migrate localStorage bookings to Firestore
   const migrateBtn = document.querySelector('[data-migrate]');
-  migrateBtn.addEventListener('click', async () => {
-    if (!confirm('Мигрировать все локальные заявки в Firestore?')) return;
-    const locals = getLocalBookings();
-    for (const b of locals) {
-      try {
-        await sendBookingToFirestore(b);
-      } catch (e) {
-        console.error('Ошибка при миграции', e);
+  if (migrateBtn) {
+    migrateBtn.addEventListener('click', async () => {
+      if (!confirm('Мигрировать все локальные заявки в Firestore?')) return;
+      const locals = getLocalBookings();
+      for (const b of locals) {
+        try {
+          await sendBookingToFirestore(b);
+        } catch (e) {
+          console.error('Ошибка при миграции', e);
+        }
       }
-    }
-    localStorage.removeItem('sonykarakol_bookings');
-    await renderBookings();
-    alert('Миграция завершена');
-  });
+      localStorage.removeItem('sonykarakol_bookings');
+      await renderBookings();
+      alert('Миграция завершена');
+    });
+  }
 
   // create admin form handler
   const createForm = document.querySelector('[data-create-admin]');
   const createStatus = document.querySelector('[data-create-status]');
-  createForm.addEventListener('submit', async (e) => {
-    e.preventDefault();
-    const fd = new FormData(createForm);
-    const email = String(fd.get('email')).trim();
-    const password = String(fd.get('password')).trim();
-    const role = String(fd.get('role')).trim() || 'admin';
-    createStatus.textContent = '';
-    try {
-      const userCred = await createUser(email, password);
-      const uid = userCred.user.uid;
-      await setAdminRole(uid, role);
-      createStatus.textContent = 'Администратор создан.';
-      createForm.reset();
-    } catch (err) {
-      console.error(err);
-      createStatus.textContent = 'Ошибка: ' + (err.message || err.code || 'неизвестно');
-    }
-  });
+  if (createForm) {
+    createForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const fd = new FormData(createForm);
+      const email = String(fd.get('email')).trim();
+      const password = String(fd.get('password')).trim();
+      const role = String(fd.get('role')).trim() || 'admin';
+      if (createStatus) createStatus.textContent = '';
+      try {
+        const userCred = await createUser(email, password);
+        const uid = userCred.user.uid;
+        await setAdminRole(uid, role);
+        if (createStatus) createStatus.textContent = 'Администратор создан.';
+        createForm.reset();
+      } catch (err) {
+        console.error(err);
+        if (createStatus) createStatus.textContent = 'Ошибка: ' + (err.message || err.code || 'неизвестно');
+      }
+    });
+  }
 
   // export and refresh handlers
   const exportBtn = document.querySelector('[data-export]');
   const refreshBtn = document.querySelector('[data-refresh]');
-  exportBtn.addEventListener('click', async () => {
-    const bookings = await getBookings();
-    exportCSV(bookings);
-  });
-  refreshBtn.addEventListener('click', async () => {
-    await renderBookings();
-    alert('Статистика обновлена');
-  });
+  if (exportBtn) {
+    exportBtn.addEventListener('click', async () => {
+      const bookings = await getBookings();
+      exportCSV(bookings);
+    });
+  }
+  if (refreshBtn) {
+    refreshBtn.addEventListener('click', async () => {
+      await renderBookings();
+      alert('Статистика обновлена');
+    });
+  }
 }
 
 document.addEventListener("DOMContentLoaded", async () => {
