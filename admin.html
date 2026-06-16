@@ -56,10 +56,50 @@
               <div class="admin-actions">
                 <button class="btn btn-secondary" type="button" data-logout>Выйти</button>
                 <button class="btn btn-primary" type="button" data-clear>Очистить все заявки</button>
+                <button class="btn btn-secondary" type="button" data-migrate>Мигрировать локальные заявки в Firestore</button>
               </div>
 
               <div class="admin-summary">
                 <p>Всего заявок: <strong data-total>0</strong></p>
+              </div>
+
+              <div class="admin-stats" data-stats>
+                <h3>Статистика и отчёты</h3>
+                <div class="stats-grid">
+                  <div>Всего заявок: <strong data-total>0</strong></div>
+                  <div>Среднее / день: <strong data-avg>0</strong></div>
+                  <div style="grid-column:1/-1">За последние 7 дней:</div>
+                  <div style="grid-column:1/-1">
+                    <ul class="stats-list" data-stats-list style="padding-left:16px;margin:6px 0"></ul>
+                  </div>
+                </div>
+                <div style="margin-top:12px; display:flex; gap:8px;">
+                  <button class="btn btn-secondary" type="button" data-export>Экспорт CSV</button>
+                  <button class="btn btn-primary" type="button" data-refresh>Обновить статистику</button>
+                </div>
+              </div>
+
+              <div class="admin-create">
+                <h3>Создать администратора</h3>
+                <form class="admin-create-form" data-create-admin>
+                  <label>
+                    Email
+                    <input type="email" name="email" required />
+                  </label>
+                  <label>
+                    Пароль
+                    <input type="password" name="password" required />
+                  </label>
+                  <label>
+                    Роль
+                    <select name="role">
+                      <option value="admin">admin</option>
+                      <option value="editor">editor</option>
+                    </select>
+                  </label>
+                  <button class="btn btn-primary" type="submit">Создать</button>
+                  <p class="form-status" data-create-status></p>
+                </form>
               </div>
 
               <div class="admin-list" data-booking-list></div>
@@ -69,6 +109,6 @@
       </section>
     </main>
 
-    <script src="js/admin.js"></script>
+    <script type="module" src="js/admin.js"></script>
   </body>
 </html>

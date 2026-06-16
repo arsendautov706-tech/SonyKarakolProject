@@ -1,3 +1,5 @@
+import { initFirebase, sendBookingToFirestore } from "./firebase-config.js";
+
 const header = document.querySelector("[data-header]");
 const nav = document.querySelector("[data-nav]");
 const menuToggle = document.querySelector("[data-menu-toggle]");
@@ -120,19 +122,13 @@ function initLightbox() {
   });
 }
 
-function saveBooking(data) {
+function saveBookingLocal(data) {
   try {
     const bookings = JSON.parse(localStorage.getItem("sonykarakol_bookings") || "[]");
-    bookings.unshift({
-      id: Date.now(),
-      name: String(data.get("name")).trim(),
-      phone: String(data.get("phone")).trim(),
-      message: String(data.get("message")).trim(),
-      createdAt: new Date().toISOString()
-    });
+    bookings.unshift(data);
     localStorage.setItem("sonykarakol_bookings", JSON.stringify(bookings));
   } catch (error) {
-    console.error("Не удалось сохранить заявку:", error);
+    console.error("Не удалось сохранить заявку локально:", error);
   }
 }
 
@@ -140,7 +136,7 @@ function initForm() {
   const form = document.querySelector("[data-form]");
   const status = document.querySelector("[data-status]");
 
-  form.addEventListener("submit", (event) => {
+  form.addEventListener("submit", async (event) => {
     event.preventDefault();
     let valid = true;
     const data = new FormData(form);
@@ -169,13 +165,38 @@ function initForm() {
 
     if (!valid) return;
 
-    saveBooking(data);
-    status.textContent = "Заявка принята. Администратор свяжется с вами для подтверждения.";
-    form.reset();
+    const booking = {
+      name: String(data.get("name")).trim(),
+      phone: String(data.get("phone")).trim(),
+      message: String(data.get("message")).trim(),
+      createdAt: new Date().toISOString()
+    };
+
+    // try to send to Firestore if available
+    try {
+      // initFirebase will have been called on DOMContentLoaded; sendBookingToFirestore throws if not initialized
+      await sendBookingToFirestore(booking);
+      status.textContent = "Заявка принята. Администратор свяжется с вами для подтверждения.";
+      form.reset();
+      return;
+    } catch (err) {
+      // fallback to localStorage
+      saveBookingLocal(booking);
+      status.textContent = "Заявка принята (сохранено локально). Администратор свяжется с вами.";
+      form.reset();
+      return;
+    }
   });
 }
 
 document.addEventListener("DOMContentLoaded", () => {
+  // try initialize Firebase (if user filled firebase-config.js)
+  try {
+    initFirebase();
+  } catch (e) {
+    console.warn("Firebase init skipped:", e);
+  }
+
   initHeader();
   initMenu();
   initActiveNavigation();
