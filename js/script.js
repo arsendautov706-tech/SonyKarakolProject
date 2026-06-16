@@ -1,5 +1,3 @@
-import { initFirebase, sendBookingToFirestore } from "./firebase-config.js";
-
 const header = document.querySelector("[data-header]");
 const nav = document.querySelector("[data-nav]");
 const menuToggle = document.querySelector("[data-menu-toggle]");
@@ -172,34 +170,14 @@ function initForm() {
       createdAt: new Date().toISOString()
     };
 
-    // try to send to Firestore if available
-    try {
-      // initFirebase will have been called on DOMContentLoaded; sendBookingToFirestore throws if not initialized
-      await sendBookingToFirestore(booking);
-      status.textContent = "Заявка принята. Администратор свяжется с вами для подтверждения.";
-      form.reset();
-      return;
-    } catch (err) {
-      // fallback to localStorage
-      saveBookingLocal(booking);
-      status.textContent = "Заявка принята (сохранено локально). Администратор свяжется с вами.";
-      form.reset();
-      return;
-    }
+    // Save to localStorage
+    saveBookingLocal(booking);
+    status.textContent = "Заявка принята. Администратор свяжется с вами для подтверждения.";
+    form.reset();
   });
 }
 
 document.addEventListener("DOMContentLoaded", () => {
-  // try initialize Firebase (if user filled firebase-config.js)
-  try {
-    initFirebase();
-  } catch (e) {
-    console.warn("Firebase init skipped:", e);
-  }
-
-  initHeader();
-  initMenu();
-  initActiveNavigation();
   initReveal();
   initCounters();
   initLightbox();
