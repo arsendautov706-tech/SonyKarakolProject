@@ -130,39 +130,17 @@ function showDashboard() {
   renderBookings();
 }
 
-function showLogin() {
-  loginPanel.classList.remove("hidden");
-  dashboardPanel.classList.add("hidden");
-  loginStatus.textContent = "";
-}
-
 function initAdmin() {
-  const adminForm = document.querySelector("[data-admin-form]");
   const logoutButton = document.querySelector("[data-logout]");
   const clearButton = document.querySelector("[data-clear]");
   const exportBtn = document.querySelector('[data-export]');
   const refreshBtn = document.querySelector('[data-refresh]');
 
-  if (localStorage.getItem("sonykarakol_admin_auth") === "true") {
-    showDashboard();
-  }
-
-  adminForm.addEventListener("submit", (event) => {
-    event.preventDefault();
-    const data = new FormData(adminForm);
-    const username = String(data.get("username")).trim();
-    const password = String(data.get("password")).trim();
-    if (username === ADMIN_CREDENTIALS.username && password === ADMIN_CREDENTIALS.password) {
-      localStorage.setItem("sonykarakol_admin_auth", "true");
-      showDashboard();
-    } else {
-      loginStatus.textContent = "Неверный логин или пароль.";
-    }
-  });
+  // Панель сразу показывается при загрузке
+  showDashboard();
 
   logoutButton.addEventListener("click", () => {
-    localStorage.removeItem("sonykarakol_admin_auth");
-    showLogin();
+    showDashboard(); // даже при "выходе" панель остаётся видимой
   });
 
   clearButton.addEventListener("click", () => {
