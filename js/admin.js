@@ -2,12 +2,26 @@ const ADMIN_CREDENTIALS = {
   username: "admin",
   password: "SonyKar2026"
 };
+const ADMIN_SESSION_KEY = "sonykarakol_admin_logged_in";
 
 const loginPanel = document.querySelector("[data-login-panel]");
 const dashboardPanel = document.querySelector("[data-dashboard]");
 const bookingList = document.querySelector("[data-booking-list]");
 const totalCount = document.querySelector("[data-total]");
 const loginStatus = document.querySelector("[data-login-status]");
+
+function isAdminLoggedIn() {
+  return sessionStorage.getItem(ADMIN_SESSION_KEY) === "true";
+}
+
+function setAdminLoggedIn(value) {
+  if (value) {
+    sessionStorage.setItem(ADMIN_SESSION_KEY, "true");
+    return;
+  }
+
+  sessionStorage.removeItem(ADMIN_SESSION_KEY);
+}
 
 function getLocalBookings() {
   try {
@@ -127,7 +141,13 @@ function renderBookings() {
 function showDashboard() {
   loginPanel.classList.add("hidden");
   dashboardPanel.classList.remove("hidden");
+  if (loginStatus) loginStatus.textContent = "";
   renderBookings();
+}
+
+function showLogin() {
+  dashboardPanel.classList.add("hidden");
+  loginPanel.classList.remove("hidden");
 }
 
 function initReveal() {
@@ -179,7 +199,58 @@ function initAdmin() {
   });
 }
 
+function initAdminSecure() {
+  const adminForm = document.querySelector("[data-admin-form]");
+  const logoutButton = document.querySelector("[data-logout]");
+  const clearButton = document.querySelector("[data-clear]");
+  const exportBtn = document.querySelector('[data-export]');
+  const refreshBtn = document.querySelector('[data-refresh]');
+
+  if (isAdminLoggedIn()) {
+    showDashboard();
+  } else {
+    showLogin();
+  }
+
+  adminForm.addEventListener("submit", (event) => {
+    event.preventDefault();
+    const formData = new FormData(adminForm);
+    const username = String(formData.get("username") || "").trim();
+    const password = String(formData.get("password") || "");
+
+    if (username === ADMIN_CREDENTIALS.username && password === ADMIN_CREDENTIALS.password) {
+      setAdminLoggedIn(true);
+      adminForm.reset();
+      showDashboard();
+      return;
+    }
+
+    loginStatus.textContent = "Неверный логин или пароль.";
+  });
+
+  logoutButton.addEventListener("click", () => {
+    setAdminLoggedIn(false);
+    showLogin();
+  });
+
+  clearButton.addEventListener("click", () => {
+    if (!confirm("РћС‡РёСЃС‚РёС‚СЊ РІСЃРµ Р·Р°СЏРІРєРё?")) return;
+    localStorage.removeItem("sonykarakol_bookings");
+    renderBookings();
+  });
+
+  exportBtn.addEventListener('click', () => {
+    const bookings = getLocalBookings();
+    exportCSV(bookings);
+  });
+
+  refreshBtn.addEventListener('click', () => {
+    renderBookings();
+    alert('РЎС‚Р°С‚РёСЃС‚РёРєР° РѕР±РЅРѕРІР»РµРЅР°');
+  });
+}
+
 document.addEventListener("DOMContentLoaded", () => {
   initReveal();
-  initAdmin();
+  initAdminSecure();
 });
