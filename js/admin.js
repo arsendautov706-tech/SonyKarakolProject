@@ -130,6 +130,25 @@ function showDashboard() {
   renderBookings();
 }
 
+function initReveal() {
+  const items = document.querySelectorAll(".reveal");
+  if (!("IntersectionObserver" in window)) {
+    items.forEach((item) => item.classList.add("visible"));
+    return;
+  }
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) entry.target.classList.add("visible");
+      });
+    },
+    { threshold: 0.16 }
+  );
+
+  items.forEach((item) => observer.observe(item));
+}
+
 function initAdmin() {
   const logoutButton = document.querySelector("[data-logout]");
   const clearButton = document.querySelector("[data-clear]");
@@ -161,5 +180,6 @@ function initAdmin() {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
+  initReveal();
   initAdmin();
 });
